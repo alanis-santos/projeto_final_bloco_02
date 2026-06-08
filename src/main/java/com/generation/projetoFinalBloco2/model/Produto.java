@@ -44,7 +44,7 @@ public class Produto {
 	@NotNull
 	@Future(message = "Esse valor é obrigatório ser positivo!")
 	private LocalDate validade;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@CreationTimestamp
 	private LocalDateTime dataCadastro;
@@ -56,6 +56,10 @@ public class Produto {
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
+
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -96,7 +100,7 @@ public class Produto {
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
-	
+
 	public LocalDateTime getDataCadastro() {
 		return dataCadastro;
 	}
@@ -119,6 +123,14 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }
